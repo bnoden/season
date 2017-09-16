@@ -22,7 +22,7 @@ const slowdown = () => {
 }
 
 (() => {
-  let i = 24;
+  let i = 28;
   while (i) {
     speedup();
     i--;
