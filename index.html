@@ -5,31 +5,22 @@
 </head>
 <body>
 
-	<div id="container">
-
-	<audio width="720" height="480" autoplay loop>
+	<audio autoplay loop>
 		<source src="./audio/DSeason.mp3" type="audio/mp3" />
 	</audio>
 
-	<video class="vid1" autoplay loop>
-		<source src="./video/dits01.mp4" type="video/mp4" />
-	</video>
-	<video class="vid1" autoplay loop>
-		<source src="./video/dits02.mp4" type="video/mp4" />
-	</video>
-	<!-- <video class="vid1" width="340" height="180" controls loop>
-		<source src="https://www.dropbox.com/s/0lhtqcygwpj55i8/cartoon03.mp4?dl=1" type="video/mp4" />
-	</video> -->
-	<!-- <video class="vid1" width="620" height="180" controls loop>
-		<source src="https://www.dropbox.com/s/2lmkwpqpadknxu4/cartoon04.mp4?dl=1" type="video/mp4" />
-	</video> -->
-
-	<div class="control-buttons">
-	<button class="btn-fast" onclick="speedup()" onkeydown="speedup()" type="button">+</button>
-	<div class="speed-display">speed: 100%</div>
-	<button class="btn-slow" onclick="slowdown()" onkeydown="slowdown()" type="button">-</button>
-	</div>
-
+	<div id="videoDisplay">
+		<video id="vid1" poster="./img/church.gif" preload loop>
+			<source src="./video/dits01.mp4" type="video/mp4" />
+		</video>
+		<video id="vid2" preload loop>
+			<source src="./video/dits02.mp4" type="video/mp4" />
+		</video>
+		<div class="control-buttons">
+		<button class="btn-fast" onclick="speedup()" onkeydown="speedup()" type="button">+</button>
+		<div class="speed-display">speed: 100%</div>
+		<button class="btn-slow" onclick="slowdown()" onkeydown="slowdown()" type="button">-</button>
+		</div>
 	</div>
 
 </body>

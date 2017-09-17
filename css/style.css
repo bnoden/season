@@ -1,30 +1,23 @@
 body {
-  background-color: #2479AD;
+background: #0E0F0D;
 }
-
-.container {
-  background-color: #205991;
+#videoDisplay {
+	margin: auto;
+	width: 820px;
+	height: 520px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
-.vid1 {
-  opacity: 0.3;
+#vid1, #vid2 {
+	max-width: 390px;
+	height: auto;
+	opacity: 0.5;
   left: 50%;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-/*@media (min-aspect-ratio: 16/9) {
-  .vid1 {
-    width: 90%;
-    height: auto;
-  }
-}
-
-@media (max-aspect-ratio: 16/9) {
-  .vid1 {
-    width: auto;
-    height: 75%;
-  }
-}*/
 
 .control-buttons {
   display: flex;
@@ -38,7 +31,7 @@ body {
 .btn-slow {
   border-radius: 32px;
   border-style: none;
-  background-color: #061924;
+  background-color: #1C5A9C;
   outline: none;
   cursor: pointer;
   width: 36px;
