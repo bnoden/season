@@ -10,7 +10,7 @@ background: #0E0F0D;
 	align-items: center;
 }
 #vid1, #vid2 {
-	max-width: 380px;
+	max-width: 720px;
 	height: auto;
   left: 50%;
   position: absolute;
@@ -21,7 +21,7 @@ background: #0E0F0D;
 	opacity: 0.7;
 }
 #vid2 {
-	opacity: 0.5;
+	opacity: 0.7;
 }
 
 .control-buttons {
