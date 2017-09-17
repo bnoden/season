@@ -5,6 +5,7 @@ let spdShow;
 let speed;
 vid1 = document.getElementById('vid1');
 vid2 = document.getElementById('vid2');
+aud1 = document.getElementById('aud1');
 spdShow = document.querySelector('.speed-display');
 
 const speedup = () => {
@@ -26,6 +27,7 @@ const slowdown = () => {
 
 (() => {
   if (vid1.buffered && vid2.buffered) {
+    aud1.play();
     let i = 28;
     vid1.play();
     vid2.play();
