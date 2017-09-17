@@ -10,7 +10,7 @@ background: #0E0F0D;
 	align-items: center;
 }
 #vid1, #vid2 {
-	max-width: 390px;
+	max-width: 380px;
 	height: auto;
 	opacity: 0.6;
   left: 50%;
