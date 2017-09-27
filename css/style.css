@@ -23,13 +23,23 @@ background: #0E0F0D;
 #vid2 {
 	opacity: 0.7;
 }
+.sliders {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#speedSlider-1, #speedSlider-2 {
+	width: 480px;
+	outline: none;
+	border: none;
+}
 
 .control-buttons {
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-end;
   padding: 8px;
-  decoration: none;
+  outline: none;
   border: none;
 }
 .btn-fast,
@@ -39,9 +49,9 @@ background: #0E0F0D;
   background-color: #1C5A9C;
   outline: none;
   cursor: pointer;
-  width: 36px;
-  height: 36px;
-  font-size: 32px;
+  width: 24px;
+  height: 24px;
+  font-size: 18px;
 }
 
 .btn-fast .btn-slow:active {
@@ -59,8 +69,12 @@ background: #0E0F0D;
   color: #bf0000;
   padding-right: 2px;
 }
-
-.speed-display {
+.speedDisplays {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.speed-display-1, .speed-display-2 {
   color: #DDE8F0;
   font-family: Verdana, Arial;
   font-weight: 400;
