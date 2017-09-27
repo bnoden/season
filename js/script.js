@@ -9,11 +9,16 @@ const spdDisplay1 = document.querySelector('.speed-display-1');
 const spdDisplay2 = document.querySelector('.speed-display-2');
 const speedSlider1 = document.getElementById('speedSlider-1');
 const speedSlider2 = document.getElementById('speedSlider-2');
+const opacitySlider1 = document.getElementById('opacitySlider-1');
+const opacitySlider2 = document.getElementById('opacitySlider-2');
 const maxSpeed = speedSlider1.max;
 const minSpeed = speedSlider1.min;
 
 const speedSlide = (v, ss) => {
   v.playbackRate = ss.value;
+}
+const opacitySlide = (v, os) => {
+  v.style.opacity = os.value;
 }
 function slide1() {
   speedSlide(vid1, speedSlider1);
@@ -22,6 +27,12 @@ function slide1() {
 function slide2() {
   speedSlide(vid2, speedSlider2);
   spdDisplay2.innerHTML = `speed two: ${(vid2.playbackRate*100).toFixed()}%`;
+}
+function slide3() {
+  opacitySlide(vid1, opacitySlider1);
+}
+function slide4() {
+  opacitySlide(vid2, opacitySlider2);
 }
 
 const speedup = () => {

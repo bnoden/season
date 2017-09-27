@@ -25,11 +25,21 @@ background: #0E0F0D;
 }
 .sliders {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 }
-#speedSlider-1, #speedSlider-2 {
-	width: 480px;
+.speed-sliders {
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+}
+.opacity-sliders {
+	display: flex;
+	flex-direction: column;
+	align-items: right;
+}
+#speedSlider-1, #speedSlider-2, #opacitySlider-1, #opacitySlider-2 {
+	width: 240px;
 	outline: none;
 	border: none;
 }
