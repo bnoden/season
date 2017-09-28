@@ -127,7 +127,7 @@ function showUI(t) {
     vid2.play();
     vid1.play();
     setTimeout(() => {
-      showUI(250);
-    }, 500);
+      showUI(500);
+    }, 3000);
   }
 })();
