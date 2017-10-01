@@ -1,6 +1,10 @@
 body {
 background: #0E0F0D;
 }
+
+
+
+
 #videoDisplay {
 	margin: auto;
 	width: 820px;
@@ -14,8 +18,8 @@ background: #0E0F0D;
 }
 
 #vid1, #vid2 {
-	max-width: 720px;
-	height: auto;
+	width: 400px;
+	height: 300px;
   left: 50%;
   position: absolute;
   top: 50%;
@@ -95,4 +99,17 @@ background: #0E0F0D;
   font-size: 12px;
   padding: 4px;
   margin: 4px;
+}
+
+@media only screen and (max-width: 700px) {
+	#vid1, #vid2 {
+		width: 270px;
+		height: 180px;
+	}
+}
+@media only screen and (max-height: 550px) {
+	#vid1, #vid2 {
+		width: 270px;
+		height: 180px;
+	}
 }
