@@ -7,8 +7,8 @@ background: #0E0F0D;
 
 #videoDisplay {
 	margin: auto;
-	width: 820px;
-	height: 520px;
+	max-width: 100%;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -18,8 +18,8 @@ background: #0E0F0D;
 }
 
 #vid1, #vid2 {
-	width: 400px;
-	height: 300px;
+	width: 480px;
+	height: 360px;
   left: 50%;
   position: absolute;
   top: 50%;
@@ -103,13 +103,13 @@ background: #0E0F0D;
 
 @media only screen and (max-width: 700px) {
 	#vid1, #vid2 {
-		width: 270px;
-		height: 180px;
+		width: 360px;
+		height: 270px;
 	}
 }
-@media only screen and (max-height: 550px) {
+@media only screen and (max-height: 600px) {
 	#vid1, #vid2 {
-		width: 270px;
-		height: 180px;
+		width: 360px;
+		height: 270px;
 	}
 }
