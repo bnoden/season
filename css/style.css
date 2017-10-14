@@ -54,22 +54,23 @@ video {
 }
 .sliders {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-flow: row wrap;
+	justify-content: space-around;
 }
 .speed-sliders {
-  align-items: left;
+	display: flex;
+  flex-flow: row wrap;
+	max-width: 50%;
 }
 .opacity-sliders {
+	display: flex;
+  flex-flow: row wrap;
+	max-width: 50%;
   display: flex;
   flex-direction: column;
-  align-items: right;
 }
-#opacitySlider-1,
-#opacitySlider-2,
-#speedSlider-1,
-#speedSlider-2 {
-  width: 240px;
+.slider {
+  width: 50%;
   outline: 0;
   border: none;
 }

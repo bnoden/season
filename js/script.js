@@ -8,8 +8,8 @@ const vid1 = qs('#vid1');
 const vid2 = qs('#vid2');
 const aud1 = qs('#aud1');
 const ctrl = qsa('.ctrl');
-const maxSpeed = qs('#speedSlider-1').max;
-const minSpeed = qs('#speedSlider-1').min;
+const maxSpeed = qs('.speedSlider-1').max;
+const minSpeed = qs('.speedSlider-1').min;
 
 const speedSlide = (v, ss) => {
   v.playbackRate = ss.value;
@@ -23,18 +23,18 @@ const setSpeedDisplay = (el, display, str) => {
   )}</span>${(el.playbackRate * 100).toFixed()}%`;
 };
 const slide1 = () => {
-  speedSlide(vid1, qs('#speedSlider-1'));
+  speedSlide(vid1, qs('.speedSlider-1'));
   setSpeedDisplay(vid1, qs('.speed-display-1'), 'speed one:');
 };
 const slide2 = () => {
-  speedSlide(vid2, qs('#speedSlider-2'));
+  speedSlide(vid2, qs('.speedSlider-2'));
   setSpeedDisplay(vid2, qs('.speed-display-2'), 'speed two:');
 };
 const slide3 = () => {
-  opacitySlide(vid1, qs('#opacitySlider-1'));
+  opacitySlide(vid1, qs('.opacitySlider-1'));
 };
 const slide4 = () => {
-  opacitySlide(vid2, qs('#opacitySlider-2'));
+  opacitySlide(vid2, qs('.opacitySlider-2'));
 };
 
 const speedup = () => {
@@ -42,8 +42,8 @@ const speedup = () => {
   speed2 = vid2.playbackRate;
   vid2.playbackRate = speed2 < maxSpeed ? speed2 + 0.01 : maxSpeed;
   vid1.playbackRate = speed1 < maxSpeed ? speed1 + 0.01 : maxSpeed;
-  qs('#speedSlider-1').value = vid1.playbackRate;
-  qs('#speedSlider-2').value = vid2.playbackRate;
+  qs('.speedSlider-1').value = vid1.playbackRate;
+  qs('.speedSlider-2').value = vid2.playbackRate;
   setSpeedDisplay(vid1, qs('.speed-display-1'), 'speed one:');
   setSpeedDisplay(vid2, qs('.speed-display-2'), 'speed two:');
 };
@@ -52,8 +52,8 @@ const slowdown = () => {
   speed2 = vid2.playbackRate;
   vid2.playbackRate = speed2 > minSpeed ? speed2 - 0.01 : minSpeed;
   vid1.playbackRate = speed1 > minSpeed ? speed1 - 0.01 : minSpeed;
-  qs('#speedSlider-1').value = vid1.playbackRate;
-  qs('#speedSlider-2').value = vid2.playbackRate;
+  qs('.speedSlider-1').value = vid1.playbackRate;
+  qs('.speedSlider-2').value = vid2.playbackRate;
   setSpeedDisplay(vid1, qs('.speed-display-1'), 'speed one:');
   setSpeedDisplay(vid2, qs('.speed-display-2'), 'speed two:');
 };
@@ -100,44 +100,44 @@ const showUI = t => {
   reveal(qs('.btn-fast'), t * 4);
   reveal(qs('.btn-swap-z'), t * 3);
   reveal(qs('.btn-swap-s'), t * 4);
-  reveal(qs('#speedSlider-1'), t * 5);
-  reveal(qs('#speedSlider-2'), t * 6);
-  reveal(qs('#opacitySlider-1'), t * 7);
-  reveal(qs('#opacitySlider-2'), t * 8);
+  reveal(qs('.speedSlider-1'), t * 5);
+  reveal(qs('.speedSlider-2'), t * 6);
+  reveal(qs('.opacitySlider-1'), t * 7);
+  reveal(qs('.opacitySlider-2'), t * 8);
   setTimeout(() => {
-    qs('#opacitySlider-1').value = 0.3;
-    vid1.style.opacity = qs('#opacitySlider-1').value;
+    qs('.opacitySlider-1').value = 0.3;
+    vid1.style.opacity = qs('.opacitySlider-1').value;
   }, t * 9);
   setTimeout(() => {
-    qs('#opacitySlider-2').value = 0.3;
-    vid2.style.opacity = qs('#opacitySlider-2').value;
+    qs('.opacitySlider-2').value = 0.3;
+    vid2.style.opacity = qs('.opacitySlider-2').value;
   }, t * 10);
   setTimeout(() => {
-    qs('#opacitySlider-1').value = 0.7;
-    vid1.style.opacity = qs('#opacitySlider-1').value;
+    qs('.opacitySlider-1').value = 0.7;
+    vid1.style.opacity = qs('.opacitySlider-1').value;
   }, t * 11);
   setTimeout(() => {
-    qs('#opacitySlider-2').value = 0.7;
-    vid2.style.opacity = qs('#opacitySlider-2').value;
+    qs('.opacitySlider-2').value = 0.7;
+    vid2.style.opacity = qs('.opacitySlider-2').value;
   }, t * 12);
   setTimeout(() => {
-    qs('#opacitySlider-1').value = 1;
-    vid1.style.opacity = qs('#opacitySlider-1').value;
+    qs('.opacitySlider-1').value = 1;
+    vid1.style.opacity = qs('.opacitySlider-1').value;
   }, t * 13);
   setTimeout(() => {
-    qs('#opacitySlider-2').value = 1;
-    vid2.style.opacity = qs('#opacitySlider-2').value;
+    qs('.opacitySlider-2').value = 1;
+    vid2.style.opacity = qs('.opacitySlider-2').value;
   }, t * 14);
   setTimeout(() => {
     speed2 = 1.8;
-    qs('#speedSlider-2').value = speed2;
-    vid2.playbackRate = qs('#speedSlider-2').value;
+    qs('.speedSlider-2').value = speed2;
+    vid2.playbackRate = qs('.speedSlider-2').value;
     setSpeedDisplay(vid2, qs('.speed-display-2'), 'speed two:');
   }, t * 15);
   setTimeout(() => {
     speed1 = 2.1;
-    qs('#speedSlider-1').value = speed1;
-    vid1.playbackRate = qs('#speedSlider-1').value;
+    qs('.speedSlider-1').value = speed1;
+    vid1.playbackRate = qs('.speedSlider-1').value;
     setSpeedDisplay(vid1, qs('.speed-display-1'), 'speed one:');
   }, t * 16);
   setTimeout(() => {
@@ -150,10 +150,10 @@ const showUI = t => {
   hide(qs('.btn-fast'), t * 18.6);
   hide(qs('.btn-swap-z'), t * 18.8);
   hide(qs('.btn-swap-s'), t * 19);
-  hide(qs('#speedSlider-1'), t * 19.2);
-  hide(qs('#speedSlider-2'), t * 19.4);
-  hide(qs('#opacitySlider-1'), t * 19.7);
-  hide(qs('#opacitySlider-2'), t * 20);
+  hide(qs('.speedSlider-1'), t * 19.2);
+  hide(qs('.speedSlider-2'), t * 19.4);
+  hide(qs('.opacitySlider-1'), t * 19.7);
+  hide(qs('.opacitySlider-2'), t * 20);
   qs('.ctr').style.visibility = 'visible';
 };
 
