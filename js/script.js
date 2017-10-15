@@ -93,12 +93,16 @@ const showUI = t => {
     vid2.style.opacity = 0.5;
   }, t);
   reveal(qs('.speed-display-1'), t);
+  reveal(qs('.btn-shrink-1'), t);
   reveal(qs('.speed-display-2'), t * 2);
+  reveal(qs('.btn-shrink-2'), t * 2);
   reveal(qs('.btn-slow'), t * 3);
+  reveal(qs('.btn-grow-1'), t * 3);
   reveal(qs('.btn-fast'), t * 4);
   reveal(qs('.btn-swap-z'), t * 3);
   reveal(qs('.btn-swap-s'), t * 4);
   reveal(qs('.speedSlider-1'), t * 5);
+  reveal(qs('.btn-grow-2'), t * 5);
   reveal(qs('.speedSlider-2'), t * 6);
   reveal(qs('.opacitySlider-1'), t * 7);
   reveal(qs('.opacitySlider-2'), t * 8);
@@ -143,16 +147,28 @@ const showUI = t => {
     toggleControls();
   }, t * 17);
   hide(qs('.speed-display-1'), t * 18);
+  hide(qs('.btn-grow-1'), t * 18);
   hide(qs('.speed-display-2'), t * 18.2);
   hide(qs('.btn-slow'), t * 18.4);
   hide(qs('.btn-fast'), t * 18.6);
   hide(qs('.btn-swap-z'), t * 18.8);
+  hide(qs('.btn-grow-2'), t * 18.9);
   hide(qs('.btn-swap-s'), t * 19);
   hide(qs('.speedSlider-1'), t * 19.2);
   hide(qs('.speedSlider-2'), t * 19.4);
+  hide(qs('.btn-shrink-1'), t * 19.5);
   hide(qs('.opacitySlider-1'), t * 19.7);
+  hide(qs('.btn-shrink-2'), t * 19.8);
   hide(qs('.opacitySlider-2'), t * 20);
-  qs('.ctr').style.visibility = 'visible';
+  setTimeout(() => {
+    qs('.message').innerHTML = '<h2>DO IT</h2>';
+    qs('.message').style.color = '#DB0000'
+    qs('.message').style.visibility = 'visible';
+  }, t*21);
+  setTimeout(() => {
+    qs('.message').style.visibility = 'hidden';
+  }, t*23);
+  // qs('.ctr').style.visibility = 'visible';
 };
 
 const growUp = t => {
