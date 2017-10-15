@@ -1,5 +1,3 @@
-(() => 'strict-mode')();
-
 let vid;
 let speed1, speed2;
 const qs = el => document.querySelector(el);
@@ -316,13 +314,14 @@ const delight = () => {
   if (!delighted) {
     delighted = 0b1;
     qs('.ctr').style.zIndex = 30;
-    vid1.style.visibility = 'visible';
-    vid2.style.visibility = 'visible';
+
     qs('.message').style.visibility = 'hidden';
     if (vid2.buffered && vid1.buffered && aud1.buffered) {
       aud1.play();
       setTimeout(() => {
         growUp(37);
+        vid1.style.visibility = 'visible';
+        vid2.style.visibility = 'visible';
       }, 500);
       setTimeout(() => {
         blastOff(20);
