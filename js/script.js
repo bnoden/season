@@ -8,6 +8,7 @@ const aud1 = qs('#aud1');
 const ctrl = qsa('.ctrl');
 const maxSpeed = qs('.speedSlider-1').max;
 const minSpeed = qs('.speedSlider-1').min;
+let maxSize = 480;
 
 const speedSlide = (v, ss) => {
   v.playbackRate = ss.value;
@@ -162,12 +163,12 @@ const showUI = t => {
   hide(qs('.opacitySlider-2'), t * 20);
   setTimeout(() => {
     qs('.message').innerHTML = '<h2>DO IT</h2>';
-    qs('.message').style.color = '#DB0000'
+    qs('.message').style.color = '#DB0000';
     qs('.message').style.visibility = 'visible';
-  }, t*21);
+  }, t * 21);
   setTimeout(() => {
     qs('.message').style.visibility = 'hidden';
-  }, t*23);
+  }, t * 23);
   // qs('.ctr').style.visibility = 'visible';
 };
 
@@ -179,15 +180,15 @@ const growUp = t => {
     vid1.style.height = `${h}px`;
     vid2.style.width = `${w}px`;
     vid2.style.height = `${h}px`;
-    ++w === 480 && clearInterval(grow);
+    ++w === maxSize && clearInterval(grow);
   }, t);
 };
 
 const resetSizes = () => {
-  vid1.style.width = '480px';
-  vid1.style.height = '360px';
-  vid2.style.width = '480px';
-  vid2.style.height = '360px';
+  vid1.style.width = maxSize + 'px';
+  vid1.style.height = maxSize * 0.75 + 'px';
+  vid2.style.width = maxSize + 'px';
+  vid2.style.height = maxSize * 0.75 + 'px';
 };
 
 let allowGrow = false;
@@ -203,7 +204,7 @@ const toggleGrow = () => {
 const grow1 = (timeout, w1, w2) => {
   timeout = !timeout ? 2 : timeout;
   w1 = !w1 ? 8 : w1;
-  w2 = !w2 ? 480 : w2;
+  w2 = !w2 ? maxSize : w2;
   const grow = setInterval(() => {
     let h1 = w1 * 0.75;
     vid1.style.zIndex = '0';
@@ -217,7 +218,7 @@ const grow1 = (timeout, w1, w2) => {
 const grow2 = (timeout, w1, w2) => {
   timeout = !timeout ? 2 : timeout;
   w1 = !w1 ? 8 : w1;
-  w2 = !w2 ? 480 : w2;
+  w2 = !w2 ? maxSize : w2;
   const grow = setInterval(() => {
     let h = w1 * 0.75;
     vid1.style.zIndex = '10';
@@ -230,7 +231,7 @@ const grow2 = (timeout, w1, w2) => {
 
 const shrink1 = (timeout, w1, w2) => {
   timeout = !timeout ? 2 : timeout;
-  w1 = !w1 ? 480 : w1;
+  w1 = !w1 ? maxSize : w1;
   w2 = !w2 ? 8 : w2;
   const shrink = setInterval(() => {
     let h1 = w1 * 0.75;
@@ -243,7 +244,7 @@ const shrink1 = (timeout, w1, w2) => {
 };
 const shrink2 = (timeout, w1, w2) => {
   timeout = !timeout ? 2 : timeout;
-  w1 = !w1 ? 480 : w1;
+  w1 = !w1 ? maxSize : w1;
   w2 = !w2 ? 8 : w2;
   const shrink = setInterval(() => {
     let h1 = w1 * 0.75;
@@ -289,16 +290,16 @@ let allowSwap = 0b0;
 
 const sizeSwap = () => {
   if (allowSwap) {
-    if (vid1.style.width === '480px') {
-      vid1.style.width = '240px';
-      vid1.style.height = '180px';
-      vid2.style.width = '480px';
+    if (vid1.style.width === maxSize + 'px') {
+      vid1.style.width = maxSize + 'px';
+      vid1.style.height = maxSize * 0.75 + 'px';
+      vid2.style.width = maxSize + 'px';
       vid2.style.height = '360px';
     } else {
-      vid2.style.width = '240px';
-      vid2.style.height = '180px';
-      vid1.style.width = '480px';
-      vid1.style.height = '360px';
+      vid2.style.width = maxSize + 'px';
+      vid2.style.height = maxSize * 0.75 + 'px';
+      vid1.style.width = maxSize + 'px';
+      vid1.style.height = maxSize * 0.75 + 'px';
     }
   }
 };
@@ -354,6 +355,21 @@ const delight = () => {
       setTimeout(() => {
         qs('.ctr').style.zIndex = 30;
       }, 25000);
+    }
+  }
+};
+
+const countClicked = count => {
+  for (controls of ctrl) {
+    count = Number(controls.dataset.count);
+    controls.innerHTML = count;
+    controls.style.backgroundColor = count > 9 && 'rgb(255, 0, 0)';
+    const maxmax = 1400;
+    if (count > 10) {
+      document.body.style.backgroundColor = '#B50000';
+      let newmax = count*80 < maxmax ? count*80 : maxmax;
+      grow1(10, 8, newmax);
+      grow2(15, 8, newmax);
     }
   }
 };
