@@ -326,24 +326,23 @@ const delight = () => {
       }, 500);
       setTimeout(() => {
         blastOff(20);
-      }, 18000);
+      }, 13000);
       setTimeout(() => {
         vid1.play();
-      }, 21150);
+      }, 16000);
       setTimeout(() => {
         vid2.play();
-      }, 24000);
+      }, 19000);
       setTimeout(() => {
         showUI(750);
-      }, 29000);
+      }, 24000);
       setTimeout(() => {
         qs('.ctr').style.zIndex = 30;
-      }, 30000);
+      }, 25000);
     }
   }
 };
 
 (() => {
   toggleControls();
-  qs('.ctr').style.visibility = 'hidden';
 })();

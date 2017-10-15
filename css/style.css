@@ -17,6 +17,7 @@ video {
 }
 .ctr {
   z-index: -10;
+	visibility: hidden;
 }
 body {
   background: #0e0f0d;
