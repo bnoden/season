@@ -367,7 +367,7 @@ const countClicked = count => {
     const maxmax = 1400;
     if (count > 10) {
       document.body.style.backgroundColor = '#B50000';
-      let newmax = count*80 < maxmax ? count*80 : maxmax;
+      let newmax = count * 80 < maxmax ? count * 80 : maxmax;
       grow1(10, 8, newmax);
       grow2(15, 8, newmax);
     }
@@ -375,5 +375,16 @@ const countClicked = count => {
 };
 
 (() => {
-  toggleControls();
+  if (
+    /MSIE 10/i.test(navigator.userAgent) ||
+    /MSIE 9/i.test(navigator.userAgent) ||
+    /rv:11.0/i.test(navigator.userAgent) ||
+    /Edge\/\d./i.test(navigator.userAgent)
+  ) {
+    document.body.style.display = 'none';
+    window.alert('Please use Chrome or Firefox');
+  }
+   else {
+    toggleControls();
+  }
 })();
