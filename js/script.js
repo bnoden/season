@@ -161,15 +161,6 @@ const showUI = t => {
   hide(qs('.opacitySlider-1'), t * 19.7);
   hide(qs('.btn-shrink-2'), t * 19.8);
   hide(qs('.opacitySlider-2'), t * 20);
-  setTimeout(() => {
-    qs('.message').innerHTML = '<h2>DO IT</h2>';
-    qs('.message').style.color = '#DB0000';
-    qs('.message').style.visibility = 'visible';
-  }, t * 21);
-  setTimeout(() => {
-    qs('.message').style.visibility = 'hidden';
-  }, t * 23);
-  // qs('.ctr').style.visibility = 'visible';
 };
 
 const growUp = t => {
