@@ -26,7 +26,7 @@ For use with PCs on Chrome or Firefox. Don't even waste your time trying to run 
 
 >"It doesn't get any better than this...?"
 
->" Do you know the default value, or the initial state of, well, anything?"
+>" Do you know the default value, or the initial state of, well, *anything*?"
 
 >"Then I entered rehab for 3 months. It was during that time that I finally became in touch with my *real* self... I'm just gonna say it—I'm a god! More precisely, as I came to understand it, I was the immortal god of... just, unbelievable, ridiculous, absolutely unnecessary, pointless, unreasonable stupidity, with a sub-specialty in prideful ignorance."
 
