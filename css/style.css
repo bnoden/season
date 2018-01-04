@@ -115,20 +115,6 @@ video {
   color: #bf0000;
   padding-right: 2px;
 }
-.speedDisplays {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.speed-display-1,
-.speed-display-2 {
-  color: #dde8f0;
-  font-family: Verdana, Arial;
-  font-weight: 400;
-  font-size: 12px;
-  padding: 4px;
-  margin: 4px;
-}
 @media only screen and (max-width: 700px) {
   #vid1,
   #vid2 {

@@ -16,18 +16,11 @@ const speedSlide = (v, ss) => {
 const opacitySlide = (v, os) => {
   v.style.opacity = os.value;
 };
-const setSpeedDisplay = (el, display, str) => {
-  display.innerHTML = `${str} <span>${leadingZeroes(
-    (el.playbackRate * 100).toFixed()
-  )}</span>${(el.playbackRate * 100).toFixed()}%`;
-};
 const slide1 = () => {
   speedSlide(vid1, qs('.speedSlider-1'));
-  setSpeedDisplay(vid1, qs('.speed-display-1'), 'speed one:');
 };
 const slide2 = () => {
   speedSlide(vid2, qs('.speedSlider-2'));
-  setSpeedDisplay(vid2, qs('.speed-display-2'), 'speed two:');
 };
 const slide3 = () => {
   opacitySlide(vid1, qs('.opacitySlider-1'));
@@ -43,8 +36,6 @@ const speedup = () => {
   vid1.playbackRate = speed1 < maxSpeed ? speed1 + 0.01 : maxSpeed;
   qs('.speedSlider-1').value = vid1.playbackRate;
   qs('.speedSlider-2').value = vid2.playbackRate;
-  setSpeedDisplay(vid1, qs('.speed-display-1'), 'speed one:');
-  setSpeedDisplay(vid2, qs('.speed-display-2'), 'speed two:');
 };
 const slowdown = () => {
   speed1 = vid1.playbackRate;
@@ -53,8 +44,6 @@ const slowdown = () => {
   vid1.playbackRate = speed1 > minSpeed ? speed1 - 0.01 : minSpeed;
   qs('.speedSlider-1').value = vid1.playbackRate;
   qs('.speedSlider-2').value = vid2.playbackRate;
-  setSpeedDisplay(vid1, qs('.speed-display-1'), 'speed one:');
-  setSpeedDisplay(vid2, qs('.speed-display-2'), 'speed two:');
 };
 
 const reveal = (el, timeout) => {
@@ -93,9 +82,7 @@ const showUI = t => {
     vid1.style.opacity = 0.5;
     vid2.style.opacity = 0.5;
   }, t);
-  reveal(qs('.speed-display-1'), t);
   reveal(qs('.btn-shrink-1'), t);
-  reveal(qs('.speed-display-2'), t * 2);
   reveal(qs('.btn-shrink-2'), t * 2);
   reveal(qs('.btn-slow'), t * 3);
   reveal(qs('.btn-grow-1'), t * 3);
@@ -116,40 +103,36 @@ const showUI = t => {
     vid2.style.opacity = qs('.opacitySlider-2').value;
   }, t * 10);
   setTimeout(() => {
-    qs('.opacitySlider-1').value = 0.7;
+    qs('.opacitySlider-1').value = 0.95;
     vid1.style.opacity = qs('.opacitySlider-1').value;
   }, t * 11);
   setTimeout(() => {
-    qs('.opacitySlider-2').value = 0.7;
+    qs('.opacitySlider-2').value = 0.95;
     vid2.style.opacity = qs('.opacitySlider-2').value;
   }, t * 12);
   setTimeout(() => {
-    qs('.opacitySlider-1').value = 1;
+    qs('.opacitySlider-1').value = 0.8;
     vid1.style.opacity = qs('.opacitySlider-1').value;
   }, t * 13);
   setTimeout(() => {
-    qs('.opacitySlider-2').value = 1;
+    qs('.opacitySlider-2').value = 0.7;
     vid2.style.opacity = qs('.opacitySlider-2').value;
   }, t * 14);
   setTimeout(() => {
     speed2 = 1.8;
     qs('.speedSlider-2').value = speed2;
     vid2.playbackRate = qs('.speedSlider-2').value;
-    setSpeedDisplay(vid2, qs('.speed-display-2'), 'speed two:');
   }, t * 15);
   setTimeout(() => {
     speed1 = 2.1;
     qs('.speedSlider-1').value = speed1;
     vid1.playbackRate = qs('.speedSlider-1').value;
-    setSpeedDisplay(vid1, qs('.speed-display-1'), 'speed one:');
   }, t * 16);
   setTimeout(() => {
     allowSwap = 0b1;
     toggleControls();
   }, t * 17);
-  hide(qs('.speed-display-1'), t * 18);
   hide(qs('.btn-grow-1'), t * 18);
-  hide(qs('.speed-display-2'), t * 18.2);
   hide(qs('.btn-slow'), t * 18.4);
   hide(qs('.btn-fast'), t * 18.6);
   hide(qs('.btn-swap-z'), t * 18.8);
@@ -307,15 +290,7 @@ const zIndexSwap = () => {
   }
 };
 
-const leadingZeroes = str => {
-  let zeroes = '';
-  if (str.length === 2) {
-    zeroes = '0';
-  } else if (str.length === 1) {
-    zeroes = '00';
-  }
-  return zeroes;
-};
+
 
 let delighted = 0b0;
 const delight = () => {
@@ -354,11 +329,11 @@ const countClicked = count => {
   for (controls of ctrl) {
     count = Number(controls.dataset.count);
     controls.innerHTML = count;
-    controls.style.backgroundColor = count > 9 && 'rgb(255, 0, 0)';
+    controls.style.backgroundColor = count > 4 && 'rgb(255, 0, 0)';
     const maxmax = 1400;
-    if (count > 10) {
+    if (count > 4) {
       document.body.style.backgroundColor = '#B50000';
-      let newmax = count * 80 < maxmax ? count * 80 : maxmax;
+      let newmax = count * 140 < maxmax ? count * 140 : maxmax;
       grow1(10, 8, newmax);
       grow2(15, 8, newmax);
     }
@@ -377,5 +352,8 @@ const countClicked = count => {
   }
    else {
     toggleControls();
+    setInterval(() => {
+      zIndexSwap();
+    }, 5255);
   }
 })();
