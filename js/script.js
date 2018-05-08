@@ -1,86 +1,66 @@
 let vid;
 let speed1, speed2;
-const qs = el => document.querySelector(el);
-const qsa = el => document.querySelectorAll(el);
+const qs = e => document.querySelector(e);
+const qsa = e => document.querySelectorAll(e);
+const vDisplay = qs('#videoDisplay');
 const vid1 = qs('#vid1');
 const vid2 = qs('#vid2');
 const aud1 = qs('#aud1');
 const ctrl = qsa('.ctrl');
-const maxSpeed = qs('.speedSlider-1').max;
-const minSpeed = qs('.speedSlider-1').min;
-let maxSize = 480;
+const MAX_SPEED = qs('.speedSlider-1').max;
+const MIN_SPEED = qs('.speedSlider-1').min;
+const MAX_SIZE = 480;
 
-const speedSlide = (v, ss) => {
-  v.playbackRate = ss.value;
-};
-const opacitySlide = (v, os) => {
-  v.style.opacity = os.value;
-};
-const slide1 = () => {
-  speedSlide(vid1, qs('.speedSlider-1'));
-};
-const slide2 = () => {
-  speedSlide(vid2, qs('.speedSlider-2'));
-};
-const slide3 = () => {
-  opacitySlide(vid1, qs('.opacitySlider-1'));
-};
-const slide4 = () => {
-  opacitySlide(vid2, qs('.opacitySlider-2'));
-};
+const speedSlide = (v, ss) => (v.playbackRate = ss.value);
+const opacitySlide = (v, os) =>
+  (v.style.filter = `opacity(${os.value * 100}%)`);
+const slide1 = () => speedSlide(vid1, qs('.speedSlider-1'));
+const slide2 = () => speedSlide(vid2, qs('.speedSlider-2'));
+const slide3 = () => opacitySlide(vid1, qs('.opacitySlider-1'));
+const slide4 = () => opacitySlide(vid2, qs('.opacitySlider-2'));
 
 const speedup = () => {
   speed1 = vid1.playbackRate;
   speed2 = vid2.playbackRate;
-  vid2.playbackRate = speed2 < maxSpeed ? speed2 + 0.01 : maxSpeed;
-  vid1.playbackRate = speed1 < maxSpeed ? speed1 + 0.01 : maxSpeed;
+  vid2.playbackRate = speed2 < MAX_SPEED ? speed2 + 0.01 : MAX_SPEED;
+  vid1.playbackRate = speed1 < MAX_SPEED ? speed1 + 0.01 : MAX_SPEED;
   qs('.speedSlider-1').value = vid1.playbackRate;
   qs('.speedSlider-2').value = vid2.playbackRate;
 };
 const slowdown = () => {
   speed1 = vid1.playbackRate;
   speed2 = vid2.playbackRate;
-  vid2.playbackRate = speed2 > minSpeed ? speed2 - 0.01 : minSpeed;
-  vid1.playbackRate = speed1 > minSpeed ? speed1 - 0.01 : minSpeed;
+  vid2.playbackRate = speed2 > MIN_SPEED ? speed2 - 0.01 : MIN_SPEED;
+  vid1.playbackRate = speed1 > MIN_SPEED ? speed1 - 0.01 : MIN_SPEED;
   qs('.speedSlider-1').value = vid1.playbackRate;
   qs('.speedSlider-2').value = vid2.playbackRate;
 };
 
-const reveal = (el, timeout) => {
+const reveal = (e, timeout) => {
   setTimeout(() => {
-    el.style.visibility = 'visible';
+    e.style.visibility = 'visible';
   }, timeout);
 };
 
-const hide = (el, timeout) => {
+const hide = (e, timeout) => {
   setTimeout(() => {
-    el.style.opacity = 0;
+    e.style.filter = 'opacity(0%)';
   }, timeout);
 };
-const toggleControls = bool => {
-  for (let controls of ctrl) {
-    controls.disabled = !typeof bool ? !controls.disabled : bool;
-  }
-};
 
-const hideAll = () => {
-  for (let controls of ctrl) {
-    controls.style.opacity = 0;
-  }
-};
+// TODO: Refactor this bool foolishness.
+const toggleControls = bool =>
+  [...ctrl].map(c => (c.disabled = !typeof bool ? !c.disabled : bool));
 
-const revealAll = () => {
-  for (let controls of ctrl) {
-    controls.style.opacity = 1;
-  }
-};
+const hideAll = () => [...ctrl].map(c => (c.style.filter = 'opacity(0%)'));
+const revealAll = () => [...ctrl].map(c => (c.style.filter = 'opacity(100%)'));
 
 const showUI = t => {
   growUp(8);
   mergeVideos(50);
   setTimeout(() => {
-    vid1.style.opacity = 0.5;
-    vid2.style.opacity = 0.5;
+    vid1.style.filter = 'opacity(50%)';
+    vid2.style.filter = 'opacity(50%)';
   }, t);
   reveal(qs('.btn-shrink-1'), t);
   reveal(qs('.btn-shrink-2'), t * 2);
@@ -96,37 +76,37 @@ const showUI = t => {
   reveal(qs('.opacitySlider-2'), t * 8);
   setTimeout(() => {
     qs('.opacitySlider-1').value = 0.3;
-    vid1.style.opacity = qs('.opacitySlider-1').value;
+    slide3();
   }, t * 9);
   setTimeout(() => {
     qs('.opacitySlider-2').value = 0.3;
-    vid2.style.opacity = qs('.opacitySlider-2').value;
+    slide4();
   }, t * 10);
   setTimeout(() => {
     qs('.opacitySlider-1').value = 0.95;
-    vid1.style.opacity = qs('.opacitySlider-1').value;
+    slide3();
   }, t * 11);
   setTimeout(() => {
     qs('.opacitySlider-2').value = 0.95;
-    vid2.style.opacity = qs('.opacitySlider-2').value;
+    slide4();
   }, t * 12);
   setTimeout(() => {
     qs('.opacitySlider-1').value = 0.8;
-    vid1.style.opacity = qs('.opacitySlider-1').value;
+    slide3();
   }, t * 13);
   setTimeout(() => {
     qs('.opacitySlider-2').value = 0.7;
-    vid2.style.opacity = qs('.opacitySlider-2').value;
+    slide4();
   }, t * 14);
   setTimeout(() => {
     speed2 = 1.8;
     qs('.speedSlider-2').value = speed2;
-    vid2.playbackRate = qs('.speedSlider-2').value;
+    slide2();
   }, t * 15);
   setTimeout(() => {
     speed1 = 2.1;
     qs('.speedSlider-1').value = speed1;
-    vid1.playbackRate = qs('.speedSlider-1').value;
+    slide1();
   }, t * 16);
   setTimeout(() => {
     allowSwap = 0b1;
@@ -154,15 +134,15 @@ const growUp = t => {
     vid1.style.height = `${h}px`;
     vid2.style.width = `${w}px`;
     vid2.style.height = `${h}px`;
-    ++w === maxSize && clearInterval(grow);
+    ++w === MAX_SIZE && clearInterval(grow);
   }, t);
 };
 
 const resetSizes = () => {
-  vid1.style.width = maxSize + 'px';
-  vid1.style.height = maxSize * 0.75 + 'px';
-  vid2.style.width = maxSize + 'px';
-  vid2.style.height = maxSize * 0.75 + 'px';
+  vid1.style.width = MAX_SIZE + 'px';
+  vid1.style.height = MAX_SIZE * 0.75 + 'px';
+  vid2.style.width = MAX_SIZE + 'px';
+  vid2.style.height = MAX_SIZE * 0.75 + 'px';
 };
 
 let allowGrow = false;
@@ -178,7 +158,7 @@ const toggleGrow = () => {
 const grow1 = (timeout, w1, w2) => {
   timeout = !timeout ? 2 : timeout;
   w1 = !w1 ? 8 : w1;
-  w2 = !w2 ? maxSize : w2;
+  w2 = !w2 ? MAX_SIZE : w2;
   const grow = setInterval(() => {
     let h1 = w1 * 0.75;
     vid1.style.zIndex = '0';
@@ -189,10 +169,11 @@ const grow1 = (timeout, w1, w2) => {
   }, timeout);
 };
 
+// TODO: Refactor for fewer functions, use functional composition
 const grow2 = (timeout, w1, w2) => {
   timeout = !timeout ? 2 : timeout;
   w1 = !w1 ? 8 : w1;
-  w2 = !w2 ? maxSize : w2;
+  w2 = !w2 ? MAX_SIZE : w2;
   const grow = setInterval(() => {
     let h = w1 * 0.75;
     vid1.style.zIndex = '10';
@@ -205,7 +186,7 @@ const grow2 = (timeout, w1, w2) => {
 
 const shrink1 = (timeout, w1, w2) => {
   timeout = !timeout ? 2 : timeout;
-  w1 = !w1 ? maxSize : w1;
+  w1 = !w1 ? MAX_SIZE : w1;
   w2 = !w2 ? 8 : w2;
   const shrink = setInterval(() => {
     let h1 = w1 * 0.75;
@@ -218,7 +199,7 @@ const shrink1 = (timeout, w1, w2) => {
 };
 const shrink2 = (timeout, w1, w2) => {
   timeout = !timeout ? 2 : timeout;
-  w1 = !w1 ? maxSize : w1;
+  w1 = !w1 ? MAX_SIZE : w1;
   w2 = !w2 ? 8 : w2;
   const shrink = setInterval(() => {
     let h1 = w1 * 0.75;
@@ -264,16 +245,16 @@ let allowSwap = 0b0;
 
 const sizeSwap = () => {
   if (allowSwap) {
-    if (vid1.style.width === maxSize + 'px') {
-      vid1.style.width = maxSize + 'px';
-      vid1.style.height = maxSize * 0.75 + 'px';
-      vid2.style.width = maxSize + 'px';
+    if (vid1.style.width === MAX_SIZE + 'px') {
+      vid1.style.width = MAX_SIZE + 'px';
+      vid1.style.height = MAX_SIZE * 0.75 + 'px';
+      vid2.style.width = MAX_SIZE + 'px';
       vid2.style.height = '360px';
     } else {
-      vid2.style.width = maxSize + 'px';
-      vid2.style.height = maxSize * 0.75 + 'px';
-      vid1.style.width = maxSize + 'px';
-      vid1.style.height = maxSize * 0.75 + 'px';
+      vid2.style.width = MAX_SIZE + 'px';
+      vid2.style.height = MAX_SIZE * 0.75 + 'px';
+      vid1.style.width = MAX_SIZE + 'px';
+      vid1.style.height = MAX_SIZE * 0.75 + 'px';
     }
   }
 };
@@ -289,8 +270,6 @@ const zIndexSwap = () => {
     }
   }
 };
-
-
 
 let delighted = 0b0;
 const delight = () => {
@@ -321,18 +300,22 @@ const delight = () => {
       setTimeout(() => {
         qs('.ctr').style.zIndex = 30;
       }, 25000);
+      setTimeout(() => {
+        vDisplay.onmouseleave = () => hideAll();
+        vDisplay.onmouseover = () => revealAll();
+      }, 25500);
     }
   }
 };
 
 const countClicked = count => {
   for (controls of ctrl) {
-    count = Number(controls.dataset.count);
+    count = +controls.dataset.count;
     controls.innerHTML = count;
-    controls.style.backgroundColor = count > 4 && 'rgb(255, 0, 0)';
     const maxmax = 1400;
     if (count > 4) {
-      document.body.style.backgroundColor = '#B50000';
+      document.body.style.filter =
+        'invert(92%) contrast(125%) brightness(130%) hue-rotate(240deg) saturate(200%)';
       let newmax = count * 140 < maxmax ? count * 140 : maxmax;
       grow1(10, 8, newmax);
       grow2(15, 8, newmax);
@@ -349,8 +332,7 @@ const countClicked = count => {
   ) {
     document.body.style.display = 'none';
     window.alert('Please use Chrome or Firefox');
-  }
-   else {
+  } else {
     toggleControls();
     setInterval(() => {
       zIndexSwap();
