@@ -22,7 +22,7 @@
     <video id="vid2" poster="https://firebasestorage.googleapis.com/v0/b/bnoden-video.appspot.com/o/002-min.png?alt=media&token=3652cc43-79c6-44ad-9283-cce032f6e0f9" onclick="zIndexSwap()" preload loop>
       <source src="https://firebasestorage.googleapis.com/v0/b/bnoden-video.appspot.com/o/dits02_480.mp4?alt=media&token=4d313a37-95ff-49ca-a48b-ac53f081219d" type="video/mp4" />
     </video>
-    <div class="ctr" onmouseenter="revealAll()" onmouseleave="hideAll()" onclick="countClicked(); this.dataset.count++; console.log(this.dataset.count+''+this.style.backgroundColor)" data-count=0>
+    <div class="ctr" onclick="countClicked(); this.dataset.count++; console.log(this.dataset.count+''+this.style.backgroundColor)" data-count=0>
       <div class="control-buttons" >
         <!-- <button class="btn-blastoff btn ctrl" onclick="blastOff()" type="button" >^</button> -->
         <button class="btn-shrink-2 btn-shrink btn ctrl" onclick="shrink2(); this.dataset.count++" data-count=0 type="button">sh2</button>
