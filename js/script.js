@@ -311,7 +311,7 @@ const delight = () => {
 const countClicked = count => {
   for (controls of ctrl) {
     count = +controls.dataset.count;
-    controls.innerHTML = count;
+    controls.innerText = count;
     const maxmax = 1400;
     if (count > 4) {
       document.body.style.filter =
