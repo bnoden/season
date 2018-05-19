@@ -23,7 +23,7 @@ body {
   background: #0e0f0d;
   color: #e9f0f2;
   z-index: 0;
-  filter: contrast(115%) brightness(110%) hue-rotate(240deg) saturate(150%);
+  filter: contrast(115%) brightness(110%) hue-rotate(20deg) saturate(150%);
 }
 #videoDisplay {
   z-index: 0;
