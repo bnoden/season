@@ -270,6 +270,19 @@ const zIndexSwap = () => {
     }
   }
 };
+let allowFilter = 0, allowAltFilter=0;
+const setFilter = () => {
+  allowFilter = !allowAltFilter && !allowFilter ? 1 : 0;
+  document.body.style.filter = allowFilter
+    ? 'invert(92%) contrast(125%) brightness(130%) hue-rotate(240deg) saturate(200%)'
+    : 'contrast(115%) brightness(90%) hue-rotate(20deg) saturate(150%)';
+};
+const altFilter = () => {
+  allowAltFilter = !allowAltFilter && !allowFilter ? 1 : 0;
+  document.body.style.filter = allowAltFilter
+    ? 'invert(16%) contrast(76%) brightness(84%) hue-rotate(200deg) saturate(70%)'
+    : 'contrast(115%) brightness(90%) hue-rotate(20deg) saturate(150%)';
+};
 
 let delighted = 0b0;
 const delight = () => {
@@ -304,6 +317,9 @@ const delight = () => {
         vDisplay.onmouseleave = () => hideAll();
         vDisplay.onmouseover = () => revealAll();
       }, 25500);
+      setTimeout(() => {
+        allowFilter = 1;
+      }, 41200);
     }
   }
 };
@@ -314,8 +330,6 @@ const countClicked = count => {
     controls.innerText = count;
     const maxmax = 1400;
     if (count > 4) {
-      document.body.style.filter =
-        'invert(92%) contrast(125%) brightness(130%) hue-rotate(240deg) saturate(200%)';
       let newmax = count * 140 < maxmax ? count * 140 : maxmax;
       grow1(10, 8, newmax);
       grow2(15, 8, newmax);
@@ -336,6 +350,18 @@ const countClicked = count => {
     toggleControls();
     setInterval(() => {
       zIndexSwap();
-    }, 5255);
+    }, 1000);
+    setInterval(() => {
+      setFilter();
+      zIndexSwap();
+    }, 3499);
+    // setInterval(() => {
+    //   setFilter();
+    //   zIndexSwap();
+    // }, 2477);
+    setInterval(() => {
+      altFilter();
+      zIndexSwap();
+    }, 4288);
   }
 })();
